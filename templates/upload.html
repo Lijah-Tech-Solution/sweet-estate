@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+
+{% block body %}
+<h1>Add article</h1>
+{% from 'includes/_formhelpers.html' import render_field %}
+<form action="/upload" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Upload image</label>
+        <input oninput="filesize(this);" type="file" name="image" id="image">
+
+    </div>
+	<input type="submit" class="btn btn-primary" value="Submit">
+
+</form>
+{% endblock %}
+{% block script %}
+	<script>
+		function filesize(elem){ 
+
+			document.cookie =`filesize = ${elem.files[0].size}`;
+		}
+	</script>
+{% endblock %}
